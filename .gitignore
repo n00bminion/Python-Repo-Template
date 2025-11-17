@@ -209,5 +209,7 @@ __marimo__/
 # Python Version
 *_version.py
 
+# Personal directories to ignore
 test.*
 *.db
+.common_utils_cache/
