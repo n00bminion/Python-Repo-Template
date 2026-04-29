@@ -1,6 +1,6 @@
-import pkg
+import test_package
 
 
 def test_import():
     """Package imports without error."""
-    assert pkg is not None
+    assert test_package is not None
