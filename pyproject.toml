@@ -5,10 +5,26 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pkg-name"
 dynamic = ["dependencies","version"]
-requires-python = ">=3.12.3,<=3.12.9"
+requires-python = ">=3.12"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pytest-cov>=6",
+]
 
 [tool.setuptools.dynamic]
 dependencies = { file = ["requirements.txt"] }
 
 [tool.setuptools_scm]
 version_file = "src/pkg/_version.py"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=src --cov-report=term-missing"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]  # pycodestyle errors, pyflakes, isort
+
+[tool.ruff.format]
+quote-style = "double"
