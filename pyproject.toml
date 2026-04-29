@@ -3,7 +3,7 @@ requires = ["setuptools", "setuptools-scm>=8"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pkg-name"
+name = "Test"
 dynamic = ["dependencies","version"]
 requires-python = ">=3.12"
 
@@ -17,7 +17,7 @@ dev = [
 dependencies = { file = ["requirements.txt"] }
 
 [tool.setuptools_scm]
-version_file = "src/pkg/_version.py"
+version_file = "src/test_package/_version.py"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
