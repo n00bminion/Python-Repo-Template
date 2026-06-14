@@ -29,7 +29,9 @@ Copilot will automatically detect your project name from the git remote and then
 - Update `pyproject.toml` with your project and package names
 - Update the placeholder test to import your package
 - Remove the stale `pkg_name.egg-info/` directory
-- Reinstall the package in editable mode (`pip install -e ".[dev]"`)
+- Create a `.venv` virtual environment and install the package in editable mode (`pip install -e ".[dev]"`)
+- Install pre-commit hooks into `.venv`
+- Delete this README and the `.github/prompts/` folder
 
 > The project name is taken from your GitHub repo name (e.g. `My-Awesome-Lib`).
 > The importable package name is derived automatically by lowercasing and replacing hyphens with underscores (e.g. `my_awesome_lib`).
@@ -39,9 +41,10 @@ Copilot will automatically detect your project name from the git remote and then
 
 ### 4. Finish setup
 
+Run the tests to verify everything is working:
+
 ```bash
-pre-commit install
-pytest
+.venv\Scripts\pytest
 ```
 
 Then add your source code under `src/<package-name>/` and start building.

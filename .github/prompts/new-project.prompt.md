@@ -68,23 +68,29 @@ Run in terminal:
 if (Test-Path src\pkg_name.egg-info) { Remove-Item -Recurse -Force src\pkg_name.egg-info }
 ```
 
-### 5. Reinstall the package in editable mode
+### 5. Create a virtual environment and install the package
 Run in terminal:
 ```
-pip install -e ".[dev]"
+python -m venv .venv
+.venv\Scripts\pip install -e ".[dev]"
 ```
-This regenerates the egg-info under the correct package name and installs dev dependencies (pytest, pytest-cov).
+This creates a `.venv` environment, then installs the package in editable mode along with dev dependencies (pytest, pytest-cov).
 
-### 6. Remove template-only files
+### 6. Install pre-commit hooks
+Run in terminal:
+```
+.venv\Scripts\pre-commit install
+```
+
+### 7. Remove template-only files
 Now that setup is complete, delete the template README and this prompt folder so they cannot be used again:
 ```
 Remove-Item -Force README.md
 Remove-Item -Recurse -Force .github\prompts
 ```
 
-### 7. Confirm
+### 8. Confirm
 Report back what was changed and remind the user to:
 - Commit the changes to git
 - Add their actual source code under `src/<package-name>/`
-- Run `pre-commit install` if they haven't yet
 - Run `pytest` to verify the placeholder test passes
