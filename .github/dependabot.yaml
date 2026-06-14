@@ -11,3 +11,9 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+
+  # Keep pre-commit hook revisions up to date
+  - package-ecosystem: "pre-commit"
+    directory: "/"
+    schedule:
+      interval: "weekly"
