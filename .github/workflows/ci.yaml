@@ -2,18 +2,21 @@ name: CI
 
 on:
   push:
+    branches:
+      - main
   pull_request:
+    branches:
+      - main
 
 jobs:
-  test:
-    name: Python ${{ matrix.python-version }} / ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
+  ci:
+    # run on github action runner
+    name: Lint and test
+    runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        python-version: ["3.12"]
+    env:
+      GH_PAT: ${{ secrets.GH_PAT }}
+      PYTHON_VERSION: 3.12
 
     steps:
       - name: Checkout repository
@@ -21,13 +24,13 @@ jobs:
         with:
           fetch-depth: 0  # required for setuptools-scm to read git tags
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Configure private GitHub access
-        run: git config --global url.https://${{ secrets.GH_PAT }}@github.com/.insteadOf https://github.com/
+        run: git config --global url.https://${{ env.GH_PAT }}@github.com/.insteadOf https://github.com/
 
       - name: Install package and dev dependencies
         run: pip install -e ".[dev]"

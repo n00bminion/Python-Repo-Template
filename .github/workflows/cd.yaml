@@ -1,0 +1,28 @@
+# name: CD
+
+# on:
+#   workflow_run:
+#     workflows: ["CI"]
+#     types:
+#       - completed
+
+# jobs:
+#   deploy:
+#     name: Build and redeploy Docker container
+#     runs-on: self-hosted
+#     if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+#     env:
+#       GH_PAT: ${{ secrets.GH_PAT }}
+
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+#         with:
+#           ref: ${{ github.event.workflow_run.head_sha }}
+
+#       - name: Build and redeploy container
+#         run: docker compose up -d --build
+
+#       - name: Verify container is running
+#         run: docker compose ps

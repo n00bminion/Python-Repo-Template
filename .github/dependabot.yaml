@@ -4,16 +4,25 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+    groups:
+      all:
+        patterns: ["*"]
 
   # Keep pip dependencies up to date
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+    groups:
+      all:
+        patterns: ["*"]
 
   # Keep pre-commit hook revisions up to date
   - package-ecosystem: "pre-commit"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+    groups:
+      all:
+        patterns: ["*"]
