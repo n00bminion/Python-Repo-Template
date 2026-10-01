@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools", "setuptools-scm>=8"]
+requires = ["setuptools", "setuptools-scm>=10.3.4"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -9,8 +9,8 @@ requires-python = ">=3.12"
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=9.1.0",
-    "pytest-cov>=6",
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
 ]
 
 [tool.setuptools.dynamic]
