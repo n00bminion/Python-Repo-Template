@@ -9,8 +9,9 @@ requires-python = ">=3.12"
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=9.1.0",
-    "pytest-cov>=6",
+    "pre-commit>=4",
+    "ruff>=0.13",
+    "setuptools-scm>=8"
 ]
 
 [tool.setuptools.dynamic]
@@ -18,10 +19,6 @@ dependencies = { file = ["requirements.txt"] }
 
 [tool.setuptools_scm]
 version_file = "src/pkg/_version.py"
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-addopts = "--cov=src --cov-report=term-missing"
 
 [tool.ruff.lint]
 select = ["E", "F", "I"]  # pycodestyle errors, pyflakes, isort
